@@ -11,7 +11,15 @@ const App: React.FC = () => {
 
   const renderCells = (): React.ReactNode => {
     return cells.map((row, rowIndex) =>
-      row.map((col, colIndex) => <Button key={`${rowIndex}-${colIndex}`} />)
+      row.map((cell, colIndex) => (
+        <Button
+          key={`${rowIndex}-${colIndex}`}
+          state={cell.state}
+          value={cell.value}
+          row={rowIndex}
+          col={colIndex}
+        />
+      ))
     );
   };
 
@@ -24,7 +32,7 @@ const App: React.FC = () => {
             🙂
           </span>
         </div>
-        <NumberDisplay value={23} />
+        <NumberDisplay value={0} />
       </div>
       <div className="Body">{renderCells()}</div>
     </div>
